@@ -1,0 +1,86 @@
+﻿@model IEnumerable<ProOnePal.Models.Fixture>
+
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<div class="jumbotron">
+    <p style="font-family:'Segoe Print'; padding-top:0px; font-size:larger" class="text-center top-right">league Fixtures</p>
+</div>
+
+
+<div class="text-center" style="padding-left:100px;">
+    @foreach (var item in Model.OrderByDescending(x => x.date))
+    {
+        <br />
+        <hr>
+        <div class="row">
+
+            <div class="col-md-4 " style="border-radius:10px; height:100px; width: 300px;">
+                <div>
+                    <p id="homeName" style="font-family:'Segoe Print'; padding-top:0px; font-size:larger" class="text-center top-right">@item.homeTeam</p>
+                    <img id="homeImage" src="@ViewBag.Images[item.homeTeam]" style="padding-top:0px; height: 150px; width:150px; border-radius:20px;" />
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="text-center text-info">
+                    <p style="padding-bottom:0px; font-family:'Segoe Print'; font-size:large">@item.pitch @@ @item.time.Hour:@item.time.Minute </p>
+                    <h4 style="padding-top:0px; font-family:'Segoe Print'; font-size:large"> (@item.tournament.name) @item.date.Date.ToShortDateString()</h4>
+                    <div>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
+                        @Html.ActionLink("Create Result", "CreateResult", new { id = item.id })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 " style="border-radius:10px; height:100px; width: 300px;">
+                <div>
+                    <p id="awayName" style="font-family:'Segoe Print'; padding-top:0px; font-size:larger" class="text-center top-right">@item.awayTeam</p>
+                    <img id="awayImage" src="@ViewBag.Images[item.awayTeam]" style="padding-top:0px; height: 150px; width:150px; border-radius:20px;" />
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+    }
+    <br />
+</div>
+
+
+<script>
+
+
+    $(document).ready(function () {
+        $(".row").each(function () {
+            insertImage();
+        });
+    });
+
+    function insertImage() {
+        makeAjaxCall("#homeName", "#homeImage");
+        makeAjaxCall("#awayName", "#awayImage");
+    }
+
+    function makeAjaxCall(tagName, image)
+    {
+        var image       = $(image);
+        var teamName    = $(tagName).text();
+        $.ajax({
+            url: "/Teams/GetTeamPath",
+            method: "POST",
+            data: { teamName: teamName },
+            success: function (result) {
+                image.attr('src', result);
+            },
+            failure: function () {
+                alert("failed");
+            }
+        });
+    }
+
+
+</script>

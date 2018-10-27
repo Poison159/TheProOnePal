@@ -1,0 +1,99 @@
+﻿@model ProOnePal.Models.Tournament
+
+<div class="jumbotron">
+    <p style="font-family:'Segoe Print'; padding-top:0px; font-size:larger" class="text-center top-right">@Model.name Q Finals Teams </p>
+</div>
+@if (Model.fixtures.Count != 0)
+{ 
+    <div id="Fixtures">
+        <h3 class="text-center" style="font-family:'Segoe Print'">Fixtures</h3>
+        <div class="text-center" style="padding-left:100px;">
+            @foreach (var item in Model.fixtures.OrderByDescending(x => x.date))
+            {
+                <br />
+                <br />
+                <div class="row">
+
+                    <div class="col-md-4 " style="border-radius:10px; height:100px; width: 300px;">
+                        <div>
+                            <p id="homeName" style="font-family:'Segoe Print'; padding-top:0px; font-size:larger" class="text-center top-right">@item.homeTeam</p>
+                            <img id="homeImage" src="@ViewBag.Images[item.homeTeam]" style="padding-top:0px; height: 150px; width:150px; border-radius:20px;" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="text-center text-info">
+                            <p style="padding-bottom:0px; font-family:'Segoe Print'; font-size:large">@item.pitch @@ @item.time.Hour:@item.time.Minute </p>
+                            <h4 style="padding-top:0px; font-family:'Segoe Print'; font-size:large"> (@item.tournament.name) @item.date.Date.ToShortDateString()</h4>
+                            @if (Request.IsAuthenticated)
+                            {
+                                <div>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
+                                    <a href="@Url.Action("CreateResult","fixtures",new { id = item.id })">Create result</a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 " style="border-radius:10px; height:100px; width: 300px;">
+                        <div>
+                            <p id="awayName" style="font-family:'Segoe Print'; padding-top:0px; font-size:larger" class="text-center top-right">@item.awayTeam</p>
+                            <img id="awayImage" src="@ViewBag.Images[item.awayTeam]" style="padding-top:0px; height: 150px; width:150px; border-radius:20px;" />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />
+            }
+            <br />
+        </div>
+    </div>
+}
+<hr />
+@if (Model.results.Count != 0)
+{
+
+    <div id="results">
+        <h3 class="text-center" style="font-family:'Segoe Print'">Results</h3>
+        <div>
+            @foreach (var item in Model.results.OrderByDescending(x => x.fixture.date))
+            {
+
+                <div class=" pull-left" style="padding-top:0px;">
+                    <div class="label-primary" style="font-family:'Segoe Print'; font-size:large">@item.fixture.pitch ( @item.fixture.date.ToShortDateString())</div>
+                </div>
+
+                <div style="padding-left:400px;">
+                    <div>
+                        <h1 style=" font-family:'Segoe Print'; font-size:large; padding-top:0px;">
+                            <img style="padding-top:0px; height: 150px; width:150px; border-radius:20px;"
+                                 src="@ViewBag.images[item.fixture.homeTeam]" />   @item.homeGoals -
+                                <img style="padding-top:0px; height: 150px; width:150px; border-radius:20px;" src="@ViewBag.images[item.fixture.awayTeam]" />  @item.awayaGoals
+                            </h1>
+                        </div>
+
+                        <div class="list-inline">
+                            @foreach (var scorer in item.scorers)
+                    {
+                                <li style="font-family:'Segoe Print'; font-size:large">@scorer.player.name</li>
+                            }
+                        </div>
+
+                        <div class="col-md-3 pull-right label-primary" style="font-family:'Segoe Print'">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                        </div>
+
+                    </div>
+            }
+        </div>
+    </div>
+}
+
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+

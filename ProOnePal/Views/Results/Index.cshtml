@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ProOnePal.Models.Result>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="jumbotron">
+    <p style="font-family:'Segoe Print'; padding-top:0px; font-size:larger" class="text-center top-right">All Results</p>
+    
+</div>
+
+<div style="padding-top:0px; background-color:transparent">
+
+    @using (Html.BeginForm("Index", "Results", FormMethod.Get))
+    {
+        <p style="font-family:'Segoe Print'; float:left; padding-top:0px;">
+            Tournament: @Html.DropDownList("tournament", "All") stage : @Html.DropDownList("stage", "All")
+            <input type="submit" value="search" />
+        </p>
+    }
+
+</div>
+<br />
+<br />
+<br />
+<div>
+    @foreach (var item in Model.OrderByDescending(x => x.fixture.date))
+    {
+
+        <div class=" pull-left" style="padding-top:0px;">
+            <div class="label-primary" style="font-family:'Segoe Print'; font-size:large">@item.fixture.pitch ( @item.fixture.date.ToShortDateString())</div>
+        </div>
+
+        <dl class="accordion" style="padding-left:400px;">
+            <dt>
+                <a style="font-family:'Segoe Print'; font-size:large; padding-top:0px;">  @item.fixture.fixtureName.Split(',').First()   @item.homeGoals - @item.fixture.fixtureName.Split(',').ElementAt(1)  @item.awayaGoals (@item.fixture.tournament.name) </a>
+            </dt>
+
+            <dd class="list-inline">
+                @foreach (var scorer in item.scorers)
+                {
+                    <li style="font-family:'Segoe Print'; font-size:large">@scorer.player.name</li>
+                }
+            </dd>
+
+            <div class="col-md-3 pull-right label-primary" style="font-family:'Segoe Print'">
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </div>
+
+        </dl>
+    }
+</div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        var panels = $('.accordion > dd').hide();
+        $('.accordion > dt > a').click(function () {
+            var $this = $(this);
+            panels.slideUp();
+            $this.parent().next().slideDown();
+            return false;
+        });
+    });
+</script>

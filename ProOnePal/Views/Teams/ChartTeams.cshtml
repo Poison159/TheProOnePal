@@ -1,0 +1,111 @@
+﻿@model ProOnePal.Models.Ratio
+@{
+    ViewBag.Title = "Chart";
+}
+<div class="jumbotron">
+    <p style="font-family:'Segoe Print'; padding-top:0px; font-size:larger" class="text-center top-right">Team Charts</p>
+</div>
+<div class="wrapper">
+    <div class="row">
+        <div class="col-md-6">
+            <div id="TeamsRatio" class="chart small" style="float:right; margin-top:0px;"></div>
+            <div id="GamesPlayed" class="chart small" style="float:left; font-family:Cooper margin-top:0px;"></div>
+        </div>
+    </div>
+    <div class="push"></div>
+</div>
+<br />
+<br />
+<div class="footer" style=""></div>
+<script src="~/Scripts/canvasjs.min.js"></script>
+
+<script type="text/javascript">
+
+    // Issue status chart
+    var issueStatus = new CanvasJS.Chart("TeamsRatio", {
+        data: [
+          {
+              showInLegend: false,
+              indexLabelFontSize: '14',
+              indexLabelFontColor: 'black',
+              startAngle: 150,
+              indexLabelPlacement: "inside",
+              toolTipContent: "{name}: {y} Players",
+              type: "pie",
+              dataPoints: [
+            { y: '@Model.skikers', indexLabel: 'strikers', name: 'strikers' },
+            { y: '@Model.wingers', indexLabel: 'wingers', name: 'wingers' },
+            { y: '@Model.midfilders', indexLabel: 'midfielders', name: 'midfielders' },
+            { y: '@Model.defenders', indexLabel: 'defenders', name: 'defenders' }
+              ]
+          }
+        ],
+        title: {
+            text: "Positions Ratio ",
+            fontSize: "22"
+        },
+        legend: {
+            fontFamily: "Arial",
+            fontSize: 14
+        },
+        creditHref: "",
+        backgroundColor: "transparent"
+    });
+    issueStatus.render();
+
+    window.myfunction = function () {
+        if (myConditionInJavaScript) {
+            $("#myfooter").hide();
+        }
+    }
+
+    window.onload = function () {
+
+        var chart = new CanvasJS.Chart("GamesPlayed", {
+            animationEnabled: true,
+            theme: "dark2", //"light1", "dark1", "dark2"
+            title: {
+                text: "Spread of goals in each country"
+            },
+            axisY: {
+                interval: 10,
+                suffix: "%"
+            },
+            toolTip: {
+                shared: true
+            },
+            data: [{
+                type: "stackedBar100",
+                toolTipContent: "{label}<br><b>{name}:</b> {y} (#percent%)",
+                showInLegend: true,
+                name: "Wins",
+                dataPoints: [
+                    { y: @ViewBag.francewins, label: "teens" },
+
+                ]
+            },
+            {
+                type: "stackedBar100",
+                toolTipContent: "<b>{name}:</b> {y} (#percent%)",
+                showInLegend: true,
+                name: "Draws",
+                dataPoints: [
+                    { y: @ViewBag.francedraws, label: "young" },
+                    
+                ]
+            },
+            {
+                type: "stackedBar100",
+                toolTipContent: "<b>{name}:</b> {y} (#percent%)",
+                showInLegend: true,
+                name: "losses",
+                dataPoints: [
+                    { y: @ViewBag.francelosses, label: "adults" },
+                ]
+            }]
+        });
+        chart.render();
+
+    }
+
+</script>

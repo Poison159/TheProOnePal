@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ProOnePal.Models.Team>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="jumbotron">
+    <p style="font-family:'Segoe Print'; padding-top:0px; font-size:xx-large" class="text-center top-right">All Teams</p>
+</div>
+<div style="padding-top:0px; background-color:transparent">
+       
+    @using (Html.BeginForm("Index", "Teams", FormMethod.Get))
+    {
+        <p style="font-family:'Segoe Print'; float:left; padding-top:0px;">
+            Name @Html.TextBox("searchName")   Kasi: @Html.DropDownList("kasi", "All")
+            <input type="submit" value="search" />
+        </p>
+    }
+    
+</div>
+
+<br/>
+<br/>
+<br/>
+
+<div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-2 text-center" >
+                <a style="font-family:'Segoe Print'; font-size:larger" href="@Url.Action("Details/" + item.id)"> <img src="@Url.Content(item.imgPath)" style="height: 150px; width:150px; border-radius:20px;" />@item.name </a>
+
+                <br />
+                <br />
+
+            </div>
+        }
+</div>
+    
+<p>
+    @Html.ActionLink("Create New", "Create", new { @class = "btn-btn-default" })
+</p>
+
+
+
