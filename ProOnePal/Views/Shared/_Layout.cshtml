@@ -19,14 +19,23 @@
                 </button>
                 @Html.ActionLink("One Pal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand label-primary" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Fixtures", "Index", "Fixtures")</li>
-                    <li>@Html.ActionLink("Teams", "Index", "Teams")</li>
-                    <li>@Html.ActionLink("Players", "Index", "Players")</li>
-                    <li>@Html.ActionLink("Results", "Index", "Results")</li>
-                    <li>@Html.ActionLink("Tournaments", "Index", "Tournaments")</li>
-                </ul>
+            <div class=" nav_main navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Fixtures", "Index", "Fixtures")</li>
+                        <li>@Html.ActionLink("Teams", "Index", "Teams")</li>
+                        <li>@Html.ActionLink("Players", "Index", "Players")</li>
+                        <li>@Html.ActionLink("Results", "Index", "Results")</li>
+                        <li>
+                            <a
+                               href="@Url.Action("Index","Tournaments")"> Tournaments
+                                <ul style="display:none" class="items">
+                                    <li>
+                                        <a href="@Url.Action("Details","Tournamnets",new { @id = 2255 })">MTN</a>
+                                    </li>
+                                </ul>
+                            </a>
+                        </li>
+                    </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -44,5 +53,6 @@
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/notify.min.js"></script>
     <script src="~/Scripts/Custom.js"></script>
+    <script src="~/Scripts/vavBar.js"></script>
 </body>
 </html>

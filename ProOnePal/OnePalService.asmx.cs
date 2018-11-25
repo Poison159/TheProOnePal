@@ -17,7 +17,6 @@ namespace ProOnePal
     [System.Web.Script.Services.ScriptService]
     public class OnePalService : System.Web.Services.WebService
     {
-
         [WebMethod]
         public string getPathfromName(string teamName)
         {

@@ -11,27 +11,42 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table table-striped table-bordered">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id }) |
-            @Html.ActionLink("Add Team", "AddTeam", new { id = item.id })|
-            @Html.ActionLink("Add Fixture", "AddFixture", new { id = item.id })
-        </td>
-    </tr>
+@{
+    var j = 1;
+    for (int i = 0; i < 2; i++)
+    {
+            <div class="col-md-6">
+                @while (j <= Model.Count())
+                {
+                    var item = Model.ElementAt(j - 1);
+                    <div class="label-primary text-center">
+                        <h2 style="font-family:'Segoe Script'">
+                            <a href="@Url.Action("Details","Tournaments",new { id = item.id })">
+                            @Html.DisplayFor(modelItem => item.name)</a>
+                        </h2>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <div>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
+                                @Html.ActionLink("Add Team", "AddTeam", new { id = item.id })|
+                                @Html.ActionLink("Add Fixture", "AddFixture", new { id = item.id })
+                            </div>
+                        }
+                    </div>
+                    if (j == 2)
+                    {
+                        j++;
+                        break;
+                    }
+                    j++;
+                }
+            </div>
+    }
 }
 
-</table>
+
+
+
+

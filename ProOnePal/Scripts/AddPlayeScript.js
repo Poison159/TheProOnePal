@@ -3,8 +3,8 @@
 function selectedPlayerImage() {
     var playersImage = $('#playersImage');
     playersImage.attr('src', '/Content/user.png');
-    $('#homePlayersId').bind('change', changeHomePreview(playersImage));
-    $('#awayPlayersId').bind('change', changeAwayPreview(playersImage));
+    $('#homePlayersId').bind('focus', changeHomePreview(playersImage));
+    $('#awayPlayersId').bind('focus', changeAwayPreview(playersImage));
 }
 
 function changeHomePreview(playersImage) {

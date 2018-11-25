@@ -16,7 +16,7 @@ namespace ProOnePal.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         
-        public event EventHandler<Team> teamNameChangedEvent;
+        
         // GET: Teams
         public ActionResult Index(string searchName, string kasi)
         {
@@ -171,6 +171,7 @@ namespace ProOnePal.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,name,kasi,imgPath,imageUpload")] Team team)
         {
+            
             if (ModelState.IsValid)
             {
                 if (team.imageUpload != null)
@@ -181,9 +182,9 @@ namespace ProOnePal.Controllers
                     team.imgPath        = "~/Content/imgs/" + fileName;
                     team.imageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/imgs/"), fileName));
                 }
-
+                
                 db.Entry(team).State = EntityState.Modified;
-                teamNameChangedEvent?.Invoke(this, team);
+                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -181,6 +181,19 @@ namespace ProOnePal.Models
             }
         }
 
+        internal static void ChangeNameInFixtures(ApplicationDbContext db, string oldName, string newName)
+        {
+            var fixtures = db.Fixtures.ToList();
+            foreach (var fix in fixtures)
+            {
+                if (fix.homeTeam == oldName)
+                    fix.homeTeam = newName;
+                else
+                    fix.awayTeam = newName;
+                db.Entry(fix).State = EntityState.Modified;
+            }
+        }
+
         private static List<Team> getLastTwo(List<Result> last4Results, List<Team> enteredTeams,ApplicationDbContext db)
         {
             string winnerSide = "";
@@ -502,18 +515,18 @@ namespace ProOnePal.Models
                 return "GS";
         }
 
-        public static decimal AvrgGoalsPerGame( int playerId, ApplicationDbContext db, List<PlayerResultStat> plaResStats)
+        public static double AvrgGoalsPerGame( int playerId, ApplicationDbContext db, List<PlayerResultStat> plaResStats)
         {
-            decimal deci = 0;
+            var res = 0.0;
             var player          = db.Players.Find(playerId);
             var teamName        = db.Teams.Find(player.teamId).name;
             var totalGoals      = getTotalGoals(plaResStats.ToList(), playerId);
             var results         = db.Results.ToList();
             Helper.assignFixturesToResults(results, db);
             results             = results.Where(x => x.fixture.awayTeam == teamName || x.fixture.homeTeam == teamName).ToList();
-            if(results.Count() != 0)
-              deci = plaResStats.Count() / results.Count();
-            return  deci;
+            if (results.Count() != 0)
+            res =  Convert.ToDouble(results.Count()) / Convert.ToDouble(plaResStats.Count());
+            return  res;
         }
         public static int getTotalGoals(List<PlayerResultStat> pl,int playerId)
         {
@@ -603,7 +616,7 @@ namespace ProOnePal.Models
             foreach (var item in teams)
                 item.players = db.Players.ToList().Where(x => x.teamId == item.id).ToList();
             var list = teams.Where(x => x.players.Count < 3).ToList();
-            return list.OrderBy(x => rand.Next()).First().id;
+            return list.OrderBy(x => +rand.Next()).First().id;
         }
 
         internal static IEnumerable<int> getTeamIds(List<Team> list)

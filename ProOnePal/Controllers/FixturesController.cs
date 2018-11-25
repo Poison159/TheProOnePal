@@ -23,8 +23,6 @@ namespace ProOnePal.Controllers
         {
             Dictionary<string,string> images    = Helper.getImagePaths(db);
             ViewBag.Images                      = images;
-            TeamsController tc = new TeamsController();
-            tc.teamNameChangedEvent += Tc_teamNameChangedEvent;
             return View(db.Fixtures.ToList().Where(x => x.Played == "No"));
         }
 

@@ -21,7 +21,8 @@ namespace ProOnePal.Controllers
         // GET: Tournaments
         public ActionResult Index()
         {
-            return View(db.Tournaments.ToList());
+            var tourns = db.Tournaments.ToList();
+            return View(tourns);
         }
 
         // GET: Tournaments/Details/5
@@ -172,6 +173,12 @@ namespace ProOnePal.Controllers
             if (tournament == null)
             {
                 return HttpNotFound();
+            }
+            if (tournament.enteredTeams.Count() != 0)
+            {
+                tournament.enteredTeams.Clear();
+                db.SaveChanges();
+                return View();
             }
             return View(tournament);
         }

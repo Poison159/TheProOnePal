@@ -21,6 +21,8 @@ namespace ProOnePal.Controllers
         {
             var teamList = new List<string>();
             var players = from cr in db.Players select cr;
+            var test = players.ToList();
+
             Helper.assignTeamsToPlayers(db,players.ToList());
             var teamquery = from gmq in db.Players
                             orderby gmq.team.name
@@ -39,7 +41,6 @@ namespace ProOnePal.Controllers
             ViewBag.num = 0;
             return View(players.OrderBy(x => x.teamId).ToList());
         }
-
         // GET: Players/Details/5
         public ActionResult Details(int? id)
         {
@@ -47,6 +48,9 @@ namespace ProOnePal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            var players = from cr in db.Players select cr;
+
             Player player = db.Players.Find(id);
             if (player == null)
             {
@@ -55,7 +59,8 @@ namespace ProOnePal.Controllers
             player.tournamentStats = db.playerTournamentStats.Where(X =>X.playerId == player.Id).ToList();
             var plrResStat  = db.playerResultStats.Where(x => x.playerId == player.Id).ToList();
             ViewBag.goals   = Helper.getPlayerGoalsByTournament(plrResStat,db);
-            ViewBag.avrg = Helper.AvrgGoalsPerGame(player.Id, db, plrResStat);
+            ViewBag.avrg = Helper.AvrgGoalsPerGame(player.Id, db, plrResStat).ToString("0.0");
+            
             return View(player);
         }
 
