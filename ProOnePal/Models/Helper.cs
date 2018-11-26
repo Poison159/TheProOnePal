@@ -523,9 +523,10 @@ namespace ProOnePal.Models
             var totalGoals      = getTotalGoals(plaResStats.ToList(), playerId);
             var results         = db.Results.ToList();
             Helper.assignFixturesToResults(results, db);
-            results             = results.Where(x => x.fixture.awayTeam == teamName || x.fixture.homeTeam == teamName).ToList();
+            results             = results.Where(x => x.fixture.awayTeam 
+                    == teamName || x.fixture.homeTeam == teamName).ToList();
             if (results.Count() != 0)
-            res =  Convert.ToDouble(results.Count()) / Convert.ToDouble(plaResStats.Count());
+            res =  Convert.ToDouble(results.Count()) / Convert.ToDouble(totalGoals);
             return  res;
         }
         public static int getTotalGoals(List<PlayerResultStat> pl,int playerId)
