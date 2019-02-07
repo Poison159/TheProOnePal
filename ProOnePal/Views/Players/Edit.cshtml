@@ -4,15 +4,17 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
 
+
+<div class="jumbotron">
+    <p style="font-family:'Segoe Print'; padding-top:0px; font-size:larger" class="text-center top-right">Player Edit</p>
+</div>
 
 @using (Html.BeginForm("Edit", "Players", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Player</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)

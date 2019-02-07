@@ -15,11 +15,12 @@
         <dt>
             @Html.DisplayNameFor(model => model.team.name)
         </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.team.name)
-        </dd>
-
+        @if (Model.team != null)
+        {
+            <dd>
+                @Html.DisplayFor(model => model.team.name)
+            </dd>
+        }
         <dt>
             @Html.DisplayNameFor(model => model.name)
         </dt>
@@ -93,6 +94,13 @@
     </div>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @if (User.IsInRole("Admin")){
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+    }
+    |
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+    }
+    |@Html.ActionLink("Back to List", "Index")
 </p>

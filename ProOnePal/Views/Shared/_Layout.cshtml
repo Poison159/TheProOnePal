@@ -6,13 +6,14 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/notify.min.js"></script>
     <script src="~/Scripts/Custom.js"></script>
-
+    
     <script>
-        $(document).ready(function () {
+        $(document).ready(function () { 
             $('li').hover(function () {
-                $(this).find('ul>li').fadeToggle(1000);
+                $(this).find('ul>li').fadeToggle(200);
             });
         });
     </script>
@@ -31,21 +32,21 @@
             </div>
             <div class=" nav_main navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Teams", "Index", "Teams")</li>
-                        <li>@Html.ActionLink("Players", "Index", "Players")</li>
-                        <li>@Html.ActionLink("Fixtures", "Index", "Fixtures")</li>
-                        <li><a href="@Url.Action("Index", "Results")">Results</a>
-                            <ul class="items">
+                        <li id="nav-item">@Html.ActionLink("Teams", "Index", "Teams")</li>
+                        <li id="nav-item">@Html.ActionLink("Players", "Index", "Players")</li>
+                        <li id="nav-item">@Html.ActionLink("Fixtures", "Index", "Fixtures")</li>
+                        <li id="nav-item"><a href="@Url.Action("Index", "Results")">Results</a>
+                            <ul class="items ">
                                 <li style="display:none"><a href="http://localhost:47625/Results?tournament=Dicovery">Discovery</a></li>
                                 <li style="display:none"><a href="http://localhost:47625/Results?tournament=TestTourn">TestTourn</a></li>
                                 <li style="display:none"><a href="http://localhost:47625/Results?tournament=UEFA">UEFA</a></li>
                             </ul>
                         </li>
-                        <li><a href="@Url.Action("Index","Tournaments")">Tournaments</a>
+                        <li id="nav-item"><a href="@Url.Action("Index","Tournaments")">Tournaments</a>
                                 <ul  class="items">
-                                    <li style="display:none"><a href="@Url.Action("Details","Tournaments",new { @id = 2038 })">Discovery</a></li>
-                                    <li style="display:none"><a href="@Url.Action("Details","Tournaments",new { @id = 2039 })">TestTourn</a></li>    
-                                    <li style="display:none"><a href="@Url.Action("Details","Tournaments",new { @id = 2040 })">UEFA</a></li> 
+                                    <li style="display:none"><a href="@Url.Action("Details","Tournaments",new { @id = 2038 })">TestTourn</a></li>
+                                    <li style="display:none"><a href="@Url.Action("Details","Tournaments",new { @id = 2039 })">UEFA</a></li>    
+                                    <li style="display:none"><a href="@Url.Action("Details","Tournaments",new { @id = 2040 })">Discovery</a></li> 
                                 </ul>
                         </li>
                     </ul>

@@ -27,12 +27,15 @@
                 <div class="text-center text-info">
                     <p style="padding-bottom:0px; font-family:'Segoe Print'; font-size:large">@item.pitch @@ @item.time.Hour:@item.time.Minute </p>
                     <h4 style="padding-top:0px; font-family:'Segoe Print'; font-size:large"> (@item.tournament.name) @item.date.Date.ToShortDateString()</h4>
-                    <div>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
-                        @Html.ActionLink("Create Result", "CreateResult", new { id = item.id })
-                    </div>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
+                            @Html.ActionLink("Create Result", "CreateResult", new { id = item.id })
+                        </div>
+                    }
                 </div>
             </div>
 

@@ -8,8 +8,8 @@
 </div>
 <div class="row">
     <div class="col-md-4">
-        <div>
-            <h3 style="font-family:'Segoe Print'"> team stats</h3>
+        <div style="font-family:'Segoe Print'">
+            <h3 style="font-family:'Segoe Print'"> Team stats</h3>
             <hr />
             <dl class="dl-horizontal">
                 <dt class="label-info" style="border-radius:20px">
@@ -28,29 +28,51 @@
                 </dd>
             </dl>
         </div>
-        <p>
-            @Html.ActionLink(" ","Edit", new { id = Model.id }, htmlAttributes: new {@class = "glyphicon glyphicon-edit glyphicon-large" } ) |
-            @Html.ActionLink(" ", "ChartTeams", new { id = Model.id }, htmlAttributes: new { @class = "glyphicon glyphicon-stats" }) |
-            @Html.ActionLink(" ", "Index",null, htmlAttributes: new { @class = "glyphicon glyphicon-backward" }) |
+        <div style="font-size:large">
+            @Html.ActionLink(" ", "Index", null, htmlAttributes: new { @class = "glyphicon glyphicon-backward" })|
+            @if (User.IsInRole("Admin")) {
+
+                @Html.ActionLink(" ", "Edit", new { id = Model.id }, htmlAttributes: new { @class = "glyphicon glyphicon-edit glyphicon-large" })
+            }
+            |
+            @if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink(" ", "Delete", new { id = Model.id }, htmlAttributes: new { @class = "glyphicon glyphicon-remove" });
+            }
+            |@Html.ActionLink(" ", "ChartTeams", new { id = Model.id }, htmlAttributes: new { @class = "glyphicon glyphicon-stats" }) |
             <button id="viewButt" style="border-radius:10px;" class="viewButt btn-default">Top Players</button>
             
-        </p>
+        </div>
         <br />
         <div class="list-inline">
                 @foreach (var item in ViewBag.recent)
                 {
                     var color = "white";
-                    if (item == 'L'){color = "red";}
+                    if (item == 'L') { color = "red"; }
                     if (item == 'W') { color = "green"; }
                     if (item == 'D') { color = "orange"; }
                     <li class="label-primary" style="font-size:x-large; background-color:@color; font-family:'Segoe Print'">@item</li>
                 }
         </div>
     </div>
-    <div class="col-md-4 ">
+    <div class="col-md-5 ">
         <img src="@Url.Content(Model.imgPath)" style="height:300px; width:250px; border-radius:50px;" />
+        
+        <div id="teamStats" class="list-inline">
+            @{
+                foreach (var item in @ViewBag.PercList)
+                {
+                    <h4>@item.tournName</h4>
+                    <li class="label-success text-center" style="font-size:larger; border-radius:90px;width:@ViewBag.PercList[0].wins/2">Wins    @item.wins %</li>
+                    <li class="label-info text-center" style="font-size:larger; border-radius:90px;width:@ViewBag.PercList[0].wins/2">Draws    @item.draws %</li>
+                    <li class="label-danger text-center" style="font-size:larger; border-radius:90px;width:@ViewBag.PercList[0].wins/2">Losses    @item.losses %</li>
+                }
+
+            }
+
+        </div>
     </div>
-    <div id="Details" class="col-md-4" style="display:none">
+    <div id="Details" class="col-md-3" style="display:none">
         <h3 style="font-family:'Segoe Print'">@Model.name's top players</h3>
         <hr />
             <table class="table table-striped table-condensed table-bordered">

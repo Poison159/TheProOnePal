@@ -191,6 +191,7 @@
     <Compile Include="Models\PlayerTournamentStat.cs" />
     <Compile Include="Models\Ratio.cs" />
     <Compile Include="Models\Result.cs" />
+    <Compile Include="Models\StatsByTournament.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Models\TeamStats.cs" />
     <Compile Include="Models\TeamTournamentStat.cs" />

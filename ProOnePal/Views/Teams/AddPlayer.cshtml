@@ -6,14 +6,15 @@
 
 <h2>Add @Model.team.name Player</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("AddPlayer", "Teams", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.imgPath)
         <div class="form-group">
             @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -39,7 +40,7 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Player Image", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <img src="@Url.Content(Model.imgPath)" style="margin:10px; border-radius:10px;" height="150" ; width="150" id="imagePreview" />
                 <input type="file" name="ImageUpload" style="margin:10px; border-radius:10px;" height="60" ; width="60" accept="image/jpeg image/png" onchange="showImagePreview(this, document.getElementById('imagePreview'))" />

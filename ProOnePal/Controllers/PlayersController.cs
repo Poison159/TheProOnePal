@@ -79,15 +79,25 @@ namespace ProOnePal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,teamId,name,age,position,imgPath")] Player player)
+        public ActionResult Create([Bind(Include = "Id,teamId,name,age,position,imgPath,imageUpload")] Player player)
         {
             ViewBag.teamId = new SelectList(db.Teams, "id", "name", player.teamId);
             var positions = Helper.ReturnPositions();
             ViewBag.position = new SelectList(positions);
             if (ModelState.IsValid)
             {
-                if (!Helper.CheckIfPlayerInTeam(player,db.Teams,db.Players))
+                if (!Helper.CheckIfPlayerInTeam(player, db.Teams, db.Players))
+                {
+                    if (player.imageUpload != null)
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(player.imageUpload.FileName);
+                        string extention = Path.GetExtension(player.imageUpload.FileName);
+                        fileName = player.name + extention;
+                        player.imgPath = "~/Content/imgs/" + fileName;
+                        player.imageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/imgs/"), fileName));
+                    }
                     db.Players.Add(player);
+                }  
                 else
                 {
                     ViewBag.error = "Player already exists";

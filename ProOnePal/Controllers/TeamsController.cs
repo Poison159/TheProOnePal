@@ -46,8 +46,9 @@ namespace ProOnePal.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             Team team       = db.Teams.Find(id);
+            team.tournamentStats = db.teamTournamentStats.ToList().Where(x => x.teamId == team.id).ToList();
             team.players    = Helper.ArrangeByGaoals(db.Players.Where(x => x.team.id == id).ToList(),db); // Arrange by all goals
-            var list = new List<Char>();
+            var list        = new List<Char>();
             if (team == null)
                 return HttpNotFound();
             
@@ -57,6 +58,12 @@ namespace ProOnePal.Controllers
             list = list.Take(5).ToList();
             list.Reverse();
             ViewBag.recent = list;
+            var tournList = Helper.getAlltournamets(db.Tournaments);
+            var teamTournStats = Helper.getTeamTournStats(db,team,tournList);
+            
+            ViewBag.PercList = teamTournStats;
+
+
             return View(team);
         }
         
@@ -81,6 +88,8 @@ namespace ProOnePal.Controllers
             var positions       = Helper.ReturnPositions();
             var playerTeam      = db.Teams.Find(id);
             player.team         = playerTeam;
+           
+
             ViewBag.position    = new SelectList(positions);
             return View(player);
         }
@@ -101,6 +110,14 @@ namespace ProOnePal.Controllers
             player.team         = playerTeam;
             if (ModelState.IsValid)
             {
+                if (player.imageUpload != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(player.imageUpload.FileName);
+                    string extention = Path.GetExtension(player.imageUpload.FileName);
+                    fileName = player.name + DateTime.Now.ToString("yymmssfff") + extention;
+                    player.imgPath = "~/Content/imgs/" + fileName;
+                    player.imageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/imgs/"), fileName));
+                }
                 db.Players.Add(player);
                 db.SaveChanges();
                 return RedirectToAction("CurrentTeamPlayers", new { id = id });
@@ -213,6 +230,14 @@ namespace ProOnePal.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Team team = db.Teams.Find(id);
+            if (team.players != null)
+            {
+                foreach (var item in team.players)
+                {
+                    var player = db.Players.Find(item.Id);
+                    player.teamId = 0;
+                }
+            }
             db.Teams.Remove(team);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -243,20 +268,23 @@ namespace ProOnePal.Controllers
         }
         public ActionResult ChartTeams(int ? id)
         {
-            var listOfPlayers = db.Players.ToList().Where(x => x.teamId == id); 
+            // Teams players
+            var listOfPlayers = db.Players.ToList().Where(x => x.teamId == id);
+            // Count the players in each position
             Ratio obj = Helper.ReturnRatio(listOfPlayers);
+            // Get all goals for each player
             Dictionary<Player, int> player_goals = new Dictionary<Player, int>();
             foreach (var player in listOfPlayers)
                 player_goals.Add(player, getAllGoals(player.tournamentStats));
-
-            List<IEnumerable<KeyValuePair<Player, int>>> key_pairs = new List<IEnumerable<KeyValuePair<Player, int>>>();
-
-            key_pairs.Add(player_goals.Where(x => x.Value > 3));
-            key_pairs.Add(player_goals.Where(x => x.Value > 1 && x.Value <=3 ));
-            key_pairs.Add(player_goals.Where(x => x.Value == 1));
-            key_pairs.Add(player_goals.Where(x => x.Value == 0));
-
-            PlayerStats fstats = Helper.getPlayerStats(key_pairs);
+            // key pair to put all goals according to age
+            List<IEnumerable<KeyValuePair<Player, int>>> playerRankList = new List<IEnumerable<KeyValuePair<Player, int>>>();
+            // add players with respect to goals scored
+            playerRankList.Add(player_goals.Where(x => x.Value > 3));
+            playerRankList.Add(player_goals.Where(x => x.Value > 1 && x.Value <=3 ));
+            playerRankList.Add(player_goals.Where(x => x.Value == 1));
+            playerRankList.Add(player_goals.Where(x => x.Value == 0));
+            
+            PlayerStats fstats = Helper.getPlayerStats(playerRankList);
             
             ViewBag.francewins = fstats.youngGoals; ViewBag.francedraws = fstats.teangoals;
             ViewBag.francelosses = fstats.adultGoals;
@@ -265,8 +293,7 @@ namespace ProOnePal.Controllers
         }
 
         private static int getAllGoals(IEnumerable<PlayerTournamentStat> tStats)
-        {
-            int sum = 0;
+        {            int sum = 0;
             foreach (var stat in tStats)
                 sum += stat.goals;
             return sum;

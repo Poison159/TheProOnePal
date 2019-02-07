@@ -209,7 +209,7 @@ namespace ProOnePal.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult AddTeam(int? id, int teamId)
         {
-            ViewBag.teamId = new SelectList(db.Teams, "id", "name");
+            //ViewBag.teamId = new SelectList(db.Teams, "id", "name");
             var images              = Helper.getImagePaths(db);
             Team team               = db.Teams.Find(teamId);
             var tournament          = db.Tournaments.Find(id);
@@ -226,15 +226,18 @@ namespace ProOnePal.Controllers
                     db.playerTournamentStats.Add(new PlayerTournamentStat()
                     { tournamentName = tournament.name, playerId = player.Id, player = player });
                 }
-                ViewBag.success = "Team added succesfully";
                 tournament.enteredTeams.Add(team);
+                db.SaveChanges();
+                ViewBag.success = "Team added succesfully";
             }
             else {
+                var stage = Helper.getStageFromTournament(tournament, db);
+                tournament.enteredTeams = Helper.getenterdTeams(tournament, db, stage);
+                ViewBag.teamId = new SelectList(db.Teams, "id", "name");
                 ViewBag.error = "Team already in tournamet";
                 ViewBag.images = images;
                 return View(tournament);
             }
-            db.SaveChanges();
             return View(tournament);
         }
 
@@ -253,6 +256,8 @@ namespace ProOnePal.Controllers
             
             return View(fixture);
         }
+
+
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
@@ -265,7 +270,7 @@ namespace ProOnePal.Controllers
             string maxPlayedMessage = "";
 
             Helper.assignTournamentsToFixtures(db);
-            tournament.results      = db.Results.Where(x => x.fixture.tournament.name== tournament.name).ToList();
+            tournament.results      = db.Results.Where(x => x.fixture.tournament.name == tournament.name).ToList();
             fixture.tournamentId    = (int)id;
             fixture.tournament      = tournament;
             fixture.fixtureName     = Helper.createFixtureName(fixture);
@@ -286,9 +291,21 @@ namespace ProOnePal.Controllers
             ViewBag.errors = errors;
             ViewBag.HomeTeam = new SelectList(teamNames);
             ViewBag.AwayTeam = new SelectList(teamNames);
-            return View(fixture);
+            return View();
         }
-
+        
+        public ActionResult LineUp(int ? fixId)
+        {
+            var fixture = db.Fixtures.Find(fixId);
+            List<Team> teamsInFixture = new List<Team>();
+            
+            teamsInFixture.Add( Helper.getTeamByName(fixture.homeTeam, db));
+            teamsInFixture.Add(Helper.getTeamByName(fixture.awayTeam, db));
+            foreach (var team in teamsInFixture)
+                team.players = null;
+            return View(teamsInFixture);
+        }
+        
         [Authorize(Roles = "Admin")]
         public ActionResult RemoveTeam(int? id,string name)
         {

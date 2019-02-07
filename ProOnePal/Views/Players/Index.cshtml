@@ -23,44 +23,27 @@
 
    
         <div class="row">
-            @{ 
-                int j = 0;
-                for (int i = 0; i < 6; i++)
+            @{
+                foreach (var item in Model)
                 {
-                    <div class="col-md-2">
-                        @while (j < Model.Count())
-                        {
-                            for (int k = 0; k < 8; k++)
-                            {
-                                <dl class="accordion">
-                                    <dt style="font-family:'Segoe Print'; font-size:large">
-                                        <a style="font-family:'Segoe Print'; font-size:large; color:darkslategrey; padding-top:0px;"> @Model.ElementAt(j).name (@Model.ElementAt(j).position) </a>    
-                                    </dt>
-                                    <dd class="list-inline">
-                                        <li>
-                                            <img id="homeImage" src="@Url.Content(Model.ElementAt(j).imgPath.Trim('`'))" style="padding-top:0px; height: 80px; width:80px; border-radius:20px;" />
-                                        </li>
-                                        <li style="font-family:'Segoe Print'; font-size:large">@Model.ElementAt(j).team.name</li>
-                                        <li style="font-family:'Segoe Print'; font-size:large">@Model.ElementAt(j).age</li>
-                                    </dd>
-                                </dl>
+                    <div class="col-sm-2" style="font-size:small">
+                        
                                 
-                                    <div class="list-inline">
-                                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                                        {
-                                            <li>@Html.ActionLink("Edit", "Edit", new { id = Model.ElementAt(j).Id })  |</li> 
-                                            <li>@Html.ActionLink("Delete", "Delete", new { id = Model.ElementAt(j).Id }) | </li> 
-                                        }
-                                        <li>@Html.ActionLink("Details", "Details", new { id = Model.ElementAt(j).Id }) </li> 
-                                    </div>
-
-                                j++;
-                            }
-                            break;
+                        <a class="text-center" style="font-family:'Segoe Print'; " href="@Url.Action("/Details/" + item.Id)"> <img src="@Url.Content(item.imgPath)" style="height: 100px; width:100px; border-radius:80px;" /> <br/>@item.name </a>
+                        <br />
+                        <br />
+                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <div class="list-inline">
+                           
+                                    <li>@Html.ActionLink("Edit", "Edit", new { id = item.Id })  |</li>
+                                    <li>@Html.ActionLink("Delete", "Delete", new { id = item.Id }) | </li>
+                            
+                            </div>
                         }
                     </div>
                 }
-            }
+           }
         </div>
     
     <p>
