@@ -35,7 +35,7 @@ namespace ProOnePal.Models
                 player.team = teams.FirstOrDefault(x => x.id == player.teamId);
         }
 
-        internal static Dictionary<string, string> getImagePaths(ApplicationDbContext db)
+        public static Dictionary<string, string> getImagePaths(ApplicationDbContext db)
         {
             var ret = new Dictionary<string, string>();
             foreach (var team in db.Teams.ToList())

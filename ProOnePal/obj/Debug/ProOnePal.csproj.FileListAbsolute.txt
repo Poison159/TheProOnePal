@@ -274,3 +274,12 @@ D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.MicrosoftAccount.x
 D:\downlooads\ProOnePal\ProOnePal\obj\Debug\ProOnePal.csprojResolveAssemblyReference.cache
 D:\downlooads\ProOnePal\ProOnePal\obj\Debug\ProOnePal.dll
 D:\downlooads\ProOnePal\ProOnePal\obj\Debug\ProOnePal.pdb
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Net.Http.Formatting.dll
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Cors.dll
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.Cors.dll
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.dll
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.WebHost.dll
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Net.Http.Formatting.xml
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.xml
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.Cors.xml
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.WebHost.xml
