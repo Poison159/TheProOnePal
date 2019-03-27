@@ -16,7 +16,6 @@ namespace ProOnePal.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         
-        
         // GET: Teams
         public ActionResult Index(string searchName, string kasi)
         {
