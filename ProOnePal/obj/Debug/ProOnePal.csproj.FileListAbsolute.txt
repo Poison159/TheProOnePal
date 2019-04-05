@@ -283,3 +283,7 @@ C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Net.Http.Formatting.xml
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.xml
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.Cors.xml
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.WebHost.xml
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\PagedList.dll
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\PagedList.Mvc.dll
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\PagedList.xml
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\PagedList.Mvc.xml

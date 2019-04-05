@@ -96,3 +96,5 @@ C:\Users\Siya\Downloads\ProOnePal\ProOnePalService\bin\Microsoft.Owin.Host.Syste
 C:\Users\Siya\Downloads\ProOnePal\ProOnePalService\obj\Debug\ProOnePalService.csprojResolveAssemblyReference.cache
 C:\Users\Siya\Downloads\ProOnePal\ProOnePalService\bin\Microsoft.Owin.Security.OAuth.dll
 C:\Users\Siya\Downloads\ProOnePal\ProOnePalService\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Siya\Downloads\ProOnePal\ProOnePalService\bin\EntityFramework.SqlServer.dll
+C:\Users\Siya\Downloads\ProOnePal\ProOnePalService\bin\EntityFramework.SqlServer.xml

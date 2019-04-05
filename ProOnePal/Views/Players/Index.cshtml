@@ -1,11 +1,13 @@
-﻿@model IEnumerable<ProOnePal.Models.Player>
+﻿
+@model PagedList.IPagedList<ProOnePal.Models.Player>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
 }
 
 <div class="jumbotron">
-    <p style="font-family:'Segoe Print'; padding-top:0px; font-size:larger" class="text-center top-right">All Players</p>
+    <p style="font-family:'Segoe Print'; padding-top:0px; font-size:larger" class="text-center top-right">Players</p>
 </div>
 <div style="padding-top:0px; background-color:transparent">
 
@@ -29,7 +31,8 @@
                     <div class="col-sm-2" style="font-size:small">
                         
                                 
-                        <a class="text-center" style="font-family:'Segoe Print'; " href="@Url.Action("/Details/" + item.Id)"> <img src="@Url.Content(item.imgPath)" style="height: 100px; width:100px; border-radius:80px;" /> <br/>@item.name </a>
+                        <a class="text-center" style="font-family:'Segoe Print'; " href="@Url.Action("/Details/" + item.Id)"> 
+                        <img src="@Url.Content(item.imgPath)" style="height: 130px; width:130px; border-radius:80px;" /> <br/>@item.name </a>
                         <br />
                         <br />
                         @if (Request.IsAuthenticated && User.IsInRole("Admin"))
@@ -45,6 +48,9 @@
                 }
            }
         </div>
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",new { page }))
     
     <p>
         @Html.ActionLink("Create New", "Create")

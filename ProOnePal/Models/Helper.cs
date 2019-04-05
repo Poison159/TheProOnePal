@@ -7,11 +7,17 @@ using System.Data.Entity;
 using System.Text;
 using System.Xml.Serialization;
 using System.IO;
+using System.Net.WebSockets;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Web.WebSockets;
+using System.Xml;
 
 namespace ProOnePal.Models
 {
     public class Helper
     {
+
         public static int Max { get; internal set; }
 
         public static TeamStats getAllTeamsStats(IEnumerable<Team> teams)
@@ -51,8 +57,8 @@ namespace ProOnePal.Models
 
         internal static List<Player> ArrangeByGaoals(List<Player> players, ApplicationDbContext db)
         {
-            List<Player> retPlayers             = new List<Player>();
-            Dictionary<int, int> playerGaols    = new Dictionary<int, int>();
+            List<Player> retPlayers = new List<Player>();
+            Dictionary<int, int> playerGaols = new Dictionary<int, int>();
             foreach (var player in players)
             {
                 var goals = 0;
@@ -69,36 +75,36 @@ namespace ProOnePal.Models
         {
             List<Tournament> tournaments = db.Tournaments.ToList();
             List<StatsByTournament> statsByPercentage = new List<StatsByTournament>();
-            
-                foreach (var item in tournaments)
-                {
-                    var gamesPlayed = getGamesPlayedInTournament(team, item.name, db);
-                    if (gamesPlayed == 0)
-                        {
-                            StatsByTournament SBT = new StatsByTournament
-                            {
-                                tournName = item.name,
-                                wins = 0,
-                                draws = 0,
-                                losses = 0
-                            };
-                            statsByPercentage.Add(SBT);
 
-                    }
-                    else {
-                        var gamesWon    = getGamesWonInTournament(team, db.Tournaments.ToList().First(x => x.name == item.name));
-                        var gamesDrawn  = getGamesDrawnInTournament(team, db.Tournaments.ToList().First(x => x.name == item.name));
-                        var gamesLost   = getGamesLostInTournament(team, db.Tournaments.ToList().First(x => x.name == item.name));
-                        StatsByTournament SBT = new StatsByTournament
-                        {
-                            tournName   = item.name,
-                            wins        = getPercentage(gamesPlayed, gamesWon),
-                            draws       = getPercentage(gamesPlayed, gamesDrawn),
-                            losses      = getPercentage(gamesPlayed, gamesLost)
-                        };
-                        statsByPercentage.Add(SBT);
-                    }
-                 }
+            foreach (var item in tournaments)
+            {
+                var gamesPlayed = getGamesPlayedInTournament(team, item.name, db);
+                if (gamesPlayed == 0)
+                {
+                    StatsByTournament SBT = new StatsByTournament
+                    {
+                        tournName = item.name,
+                        wins = 0,
+                        draws = 0,
+                        losses = 0
+                    };
+                    statsByPercentage.Add(SBT);
+
+                }
+                else {
+                    var gamesWon = getGamesWonInTournament(team, db.Tournaments.ToList().First(x => x.name == item.name));
+                    var gamesDrawn = getGamesDrawnInTournament(team, db.Tournaments.ToList().First(x => x.name == item.name));
+                    var gamesLost = getGamesLostInTournament(team, db.Tournaments.ToList().First(x => x.name == item.name));
+                    StatsByTournament SBT = new StatsByTournament
+                    {
+                        tournName = item.name,
+                        wins = getPercentage(gamesPlayed, gamesWon),
+                        draws = getPercentage(gamesPlayed, gamesDrawn),
+                        losses = getPercentage(gamesPlayed, gamesLost)
+                    };
+                    statsByPercentage.Add(SBT);
+                }
+            }
             return statsByPercentage;
         }
 
@@ -126,17 +132,17 @@ namespace ProOnePal.Models
 
         internal static void prepTournament(Tournament tournament, ApplicationDbContext db)
         {
-            var stage               = getStageFromTournament(tournament, db);
-            tournament.enteredTeams = getenterdTeams(tournament, db,stage);
+            var stage = getStageFromTournament(tournament, db);
+            tournament.enteredTeams = getenterdTeams(tournament, db, stage);
             Helper.assignFixturesToResults(db.Results.ToList(), db);
-            tournament.results      = db.Results.ToList().Where(x => x.fixture.tournamentId == tournament.id).ToList();
+            tournament.results = db.Results.ToList().Where(x => x.fixture.tournamentId == tournament.id).ToList();
             int qFinalFixturesCount = db.Fixtures.ToList().Where(x => x.tournamentId == tournament.id && x.stage == "QF").Count();
 
             if (qFinalFixturesCount == 0)
                 CreateFixtures(tournament, db);
 
-            tournament.fixtures     = db.Fixtures.ToList().Where(x => x.tournamentId == tournament.id && x.stage == "QF" && x.Played == "No").ToList();
-            tournament.results      = db.Results.ToList().Where(x => x.fixture.tournamentId == tournament.id && x.fixture.stage == "QF").ToList();
+            tournament.fixtures = db.Fixtures.ToList().Where(x => x.tournamentId == tournament.id && x.stage == "QF" && x.Played == "No").ToList();
+            tournament.results = db.Results.ToList().Where(x => x.fixture.tournamentId == tournament.id && x.fixture.stage == "QF").ToList();
             getStatsbyName(tournament.enteredTeams, tournament.name); // prioritise current tournStat
 
             foreach (var res in tournament.results)
@@ -158,10 +164,10 @@ namespace ProOnePal.Models
 
         internal static void prepTournament2(Tournament tournament, ApplicationDbContext db)
         {
-            var stage               = getStageFromTournament(tournament, db);
+            var stage = getStageFromTournament(tournament, db);
             tournament.enteredTeams = getenterdTeams(tournament, db, stage);
             Helper.assignFixturesToResults(db.Results.ToList(), db);
-            tournament.results      = db.Results.ToList().Where(x => x.fixture.tournamentId == tournament.id).ToList();
+            tournament.results = db.Results.ToList().Where(x => x.fixture.tournamentId == tournament.id).ToList();
             int qFinalFixturesCount = db.Fixtures.ToList().Where(x => x.tournamentId == tournament.id && x.stage == "F").Count();
 
             if (qFinalFixturesCount == 0)
@@ -185,10 +191,10 @@ namespace ProOnePal.Models
 
         private static void CreateFixtures(Tournament tourn, ApplicationDbContext db)
         {
-            var stage           = getStageFromTournament(tourn, db);
-            tourn.enteredTeams  = Helper.getenterdTeams(tourn, db,stage);
-            tourn.fixtures      = db.Fixtures.ToList().Where(x => x.tournamentId == tourn.id).ToList();
-            tourn.results       = db.Results.ToList().Where(x => x.fixture.tournamentId == tourn.id).ToList();
+            var stage = getStageFromTournament(tourn, db);
+            tourn.enteredTeams = Helper.getenterdTeams(tourn, db, stage);
+            tourn.fixtures = db.Fixtures.ToList().Where(x => x.tournamentId == tourn.id).ToList();
+            tourn.results = db.Results.ToList().Where(x => x.fixture.tournamentId == tourn.id).ToList();
             int start = 0;
             int mid = (tourn.enteredTeams.Count / 2);
             while (start < tourn.enteredTeams.Count / 2)
@@ -233,7 +239,7 @@ namespace ProOnePal.Models
             }
         }
 
-        private static List<Team> getLastTwo(List<Result> last4Results, List<Team> enteredTeams,ApplicationDbContext db)
+        private static List<Team> getLastTwo(List<Result> last4Results, List<Team> enteredTeams, ApplicationDbContext db)
         {
             string winnerSide = "";
             List<Team> lastTwo = new List<Team>();
@@ -244,8 +250,8 @@ namespace ProOnePal.Models
                 else
                     winnerSide = "away";
 
-                if(winnerSide == "home")
-                    lastTwo.Add(getTeamByName(res.fixture.homeTeam,db));
+                if (winnerSide == "home")
+                    lastTwo.Add(getTeamByName(res.fixture.homeTeam, db));
                 else
                     lastTwo.Add(getTeamByName(res.fixture.awayTeam, db));
             }
@@ -290,9 +296,9 @@ namespace ProOnePal.Models
                 sum = 0;
                 foreach (var plrStat in plrResStats)
                 {
-                    plrStat.result                      = db.Results.FirstOrDefault(x => x.id == plrStat.resultId);
-                    plrStat.result.fixture              = db.Fixtures.FirstOrDefault(x => x.id == plrStat.result.fixtureId);
-                    plrStat.result.fixture.tournament   = db.Tournaments.FirstOrDefault(x => x.id == plrStat.result.fixture.tournamentId);
+                    plrStat.result = db.Results.FirstOrDefault(x => x.id == plrStat.resultId);
+                    plrStat.result.fixture = db.Fixtures.FirstOrDefault(x => x.id == plrStat.result.fixtureId);
+                    plrStat.result.fixture.tournament = db.Tournaments.FirstOrDefault(x => x.id == plrStat.result.fixture.tournamentId);
                     if (plrStat.result.fixture.tournament.name == tournName)
                         sum++;
                 }
@@ -328,8 +334,8 @@ namespace ProOnePal.Models
 
         internal static bool CheckIfPlayerInTeam(Player player, DbSet<Team> teams, DbSet<Player> players)
         {
-            var team        = teams.Find(player.teamId);
-            team.players    = players.Where(x => x.team.id == team.id).ToList();
+            var team = teams.Find(player.teamId);
+            team.players = players.Where(x => x.team.id == team.id).ToList();
             if (Helper.getPlayerNames(team.players).Contains(player.name))
                 return true;
             return false;
@@ -351,14 +357,14 @@ namespace ProOnePal.Models
             return playerNames;
         }
 
-        internal static List<Team> getenterdTeams(Tournament tournament, ApplicationDbContext db,string stage)
+        internal static List<Team> getenterdTeams(Tournament tournament, ApplicationDbContext db, string stage)
         {
-            var teams           = new List<Team>();
-            var filteredStats   = new List<TeamTournamentStat>();
+            var teams = new List<Team>();
+            var filteredStats = new List<TeamTournamentStat>();
             if (stage != "GS")
-                filteredStats  = db.teamTournamentStats.Where(x => x.tournamentName
-                    == tournament.name && x.group == stage).ToList();
-            if(stage == "Done")
+                filteredStats = db.teamTournamentStats.Where(x => x.tournamentName
+                   == tournament.name && x.group == stage).ToList();
+            if (stage == "Done")
                 filteredStats = db.teamTournamentStats.Where(x => x.tournamentName
                    == tournament.name && x.group == "W").ToList();
             else
@@ -429,8 +435,8 @@ namespace ProOnePal.Models
 
         internal static Dictionary<string, string> getPlayerImagePaths(ApplicationDbContext db)
         {
-            Dictionary<string, string> dic  = new Dictionary<string, string>();
-            var players                     = db.Players.ToList();
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            var players = db.Players.ToList();
             foreach (var player in players)
                 dic.Add(player.name, player.imgPath);
             return dic;
@@ -514,9 +520,9 @@ namespace ProOnePal.Models
 
         internal static void verifyFixture(ApplicationDbContext db, Fixture fixture, List<string> errors, List<Team> teams, Tournament tournament, ref string maxPlayedMessage)
         {
-            var teamsInFixture  = getTeams(fixture.homeTeam, fixture.awayTeam, db.Teams.ToList());
-            var dbFixtures      = db.Fixtures.ToList();
-            
+            var teamsInFixture = getTeams(fixture.homeTeam, fixture.awayTeam, db.Teams.ToList());
+            var dbFixtures = db.Fixtures.ToList();
+
             if (fixture.date <= DateTime.Now)
                 errors.Add("Date field must be a future date");
             if (!Helper.areTeamsInSameGroup(fixture.homeTeam, fixture.awayTeam, tournament, db))
@@ -541,7 +547,7 @@ namespace ProOnePal.Models
 
         internal static string getStageFromTournament(Tournament tournament, ApplicationDbContext db)
         {
-            
+
             if (tournament.results.Count >= 12 && tournament.results.Count < 14)
                 return "QF";
             if (tournament.results.Count == 14)
@@ -552,21 +558,21 @@ namespace ProOnePal.Models
                 return "GS";
         }
 
-        public static double AvrgGoalsPerGame( int playerId, ApplicationDbContext db, List<PlayerResultStat> plaResStats)
+        public static double AvrgGoalsPerGame(int playerId, ApplicationDbContext db, List<PlayerResultStat> plaResStats)
         {
             var res = 0.0;
-            var player          = db.Players.Find(playerId);
-            var teamName        = db.Teams.Find(player.teamId).name;
-            var totalGoals      = getTotalGoals(plaResStats.ToList(), playerId);
-            var results         = db.Results.ToList();
+            var player = db.Players.Find(playerId);
+            var teamName = db.Teams.Find(player.teamId).name;
+            var totalGoals = getTotalGoals(plaResStats.ToList(), playerId);
+            var results = db.Results.ToList();
             Helper.assignFixturesToResults(results, db);
-            results             = results.Where(x => x.fixture.awayTeam 
-                    == teamName || x.fixture.homeTeam == teamName).ToList();
+            results = results.Where(x => x.fixture.awayTeam
+        == teamName || x.fixture.homeTeam == teamName).ToList();
             if (results.Count() != 0 && totalGoals != 0)
-                res =  Convert.ToDouble(results.Count()) / Convert.ToDouble(totalGoals);
-            return  res;
+                res = Convert.ToDouble(results.Count()) / Convert.ToDouble(totalGoals);
+            return res;
         }
-        public static int getTotalGoals(List<PlayerResultStat> pl,int playerId)
+        public static int getTotalGoals(List<PlayerResultStat> pl, int playerId)
         {
             var totalGoals = 0;
             foreach (var res in pl)
@@ -575,32 +581,32 @@ namespace ProOnePal.Models
         }
 
 
-        public static void AssignWinningTeam(Tournament tournament,ApplicationDbContext db)
+        public static void AssignWinningTeam(Tournament tournament, ApplicationDbContext db)
         {
-            var lastResult      = tournament.results.Last();
+            var lastResult = tournament.results.Last();
             tournament.fixtures = db.Fixtures.ToList().Where(x => x.tournamentId == tournament.id).ToList();
-            var homeTeam        = tournament.enteredTeams.FirstOrDefault(x => x.name == lastResult.fixture.homeTeam);
-            var awayTeam        = tournament.enteredTeams.FirstOrDefault(x => x.name == lastResult.fixture.awayTeam);
+            var homeTeam = tournament.enteredTeams.FirstOrDefault(x => x.name == lastResult.fixture.homeTeam);
+            var awayTeam = tournament.enteredTeams.FirstOrDefault(x => x.name == lastResult.fixture.awayTeam);
 
             if (lastResult.homeGoals > lastResult.awayaGoals)
-                homeTeam.tournamentStats.FirstOrDefault(x => 
+                homeTeam.tournamentStats.FirstOrDefault(x =>
                 x.tournamentName == tournament.name).group = "W";
             else
-                awayTeam.tournamentStats.FirstOrDefault(x => 
+                awayTeam.tournamentStats.FirstOrDefault(x =>
                 x.tournamentName == tournament.name).group = "W";
         }
-        
+
 
         public static int getGoalDiff(int gf, int ga)
         {
             return (gf - ga);
         }
 
-        public static Dictionary<string,TeamStats> getTeamsObjStat(ApplicationDbContext db,int id)
+        public static Dictionary<string, TeamStats> getTeamsObjStat(ApplicationDbContext db, int id)
         {
             Team team = db.Teams.Find(id);
             Dictionary<string, TeamStats> dictionary = new Dictionary<string, TeamStats>();
-                dictionary.Add(team.name, getRatio(lastFiveResults(team.name, db)));
+            dictionary.Add(team.name, getRatio(lastFiveResults(team.name, db)));
             return dictionary;
         }
 
@@ -610,19 +616,19 @@ namespace ProOnePal.Models
             TeamStats ts = new TeamStats();
             foreach (var letter in str)
             {
-                if(letter == 'W')
+                if (letter == 'W')
                     ts.wins = countDistinct(str, letter);
                 if (letter == 'D')
                     ts.draws = countDistinct(str, letter);
-                if(letter == 'L')
+                if (letter == 'L')
                     ts.losses = countDistinct(str, letter);
             }
             return ts;
         }
 
-      
 
-        public static int countDistinct(string str,char c)
+
+        public static int countDistinct(string str, char c)
         {
             int res = 0;
             foreach (var letter in str)
@@ -634,24 +640,24 @@ namespace ProOnePal.Models
 
         public static Ratio ReturnRatio(IEnumerable<Player> list)
         {
-            var ecxel       = list.Where(x => x.position == "ST");
-            var good        = list.Where(x => x.position == "LW" || x.position == "RW");
-            var poor        = list.Where(x => x.position == "CAD" || x.position == "LB" || x.position == "RB");
-            var fair        = list.Where(x => x.position == "MD" || x.position == "CAM");
+            var ecxel = list.Where(x => x.position == "ST");
+            var good = list.Where(x => x.position == "LW" || x.position == "RW");
+            var poor = list.Where(x => x.position == "CAD" || x.position == "LB" || x.position == "RB");
+            var fair = list.Where(x => x.position == "MD" || x.position == "CAM");
 
-            Ratio obj       = new Ratio();
-            obj.skikers     = ecxel.Count();
-            obj.wingers     = good.Count();
-            obj.midfilders  = fair.Count();
-            obj.defenders   = poor.Count();
+            Ratio obj = new Ratio();
+            obj.skikers = ecxel.Count();
+            obj.wingers = good.Count();
+            obj.midfilders = fair.Count();
+            obj.defenders = poor.Count();
 
             return obj;
         }
 
         internal static int RandomTeamsId(ApplicationDbContext db)
         {
-            var rand        = new Random();
-            var teams       = db.Teams.ToList();
+            var rand = new Random();
+            var teams = db.Teams.ToList();
             foreach (var item in teams)
                 item.players = db.Players.ToList().Where(x => x.teamId == item.id).ToList();
             var list = teams.Where(x => x.players.Count < 3).ToList();
@@ -666,8 +672,8 @@ namespace ProOnePal.Models
 
         internal static string RandomPosition()
         {
-            Random rand     = new Random();
-            var positions   = ReturnPositions();
+            Random rand = new Random();
+            var positions = ReturnPositions();
             return positions.OrderBy(x => rand.Next()).First();
         }
 
@@ -694,12 +700,12 @@ namespace ProOnePal.Models
             return true;
         }
 
-        internal static bool areTeamsInSameGroup(string homeTeam, string awayTeam,Tournament tourn, ApplicationDbContext db)
+        internal static bool areTeamsInSameGroup(string homeTeam, string awayTeam, Tournament tourn, ApplicationDbContext db)
         {
-            var homeStat        = db.teamTournamentStats.First(x => x.team.name == homeTeam &&
-                                  x.tournamentName == tourn.name);
-            var awayStat        = db.teamTournamentStats.First(x => x.team.name == awayTeam &&
-                                x.tournamentName == tourn.name);
+            var homeStat = db.teamTournamentStats.First(x => x.team.name == homeTeam &&
+                           x.tournamentName == tourn.name);
+            var awayStat = db.teamTournamentStats.First(x => x.team.name == awayTeam &&
+                         x.tournamentName == tourn.name);
             if (homeStat.group == awayStat.group)
                 return true;
             else
@@ -739,28 +745,28 @@ namespace ProOnePal.Models
         }
         internal static void SaveData(ApplicationDbContext db, Result result)
         {
-            var fixture     = db.Fixtures.Find(result.fixtureId);
-            fixture.Played  = "Yes";
+            var fixture = db.Fixtures.Find(result.fixtureId);
+            fixture.Played = "Yes";
             db.SaveChanges();
-            var tournament  = db.Tournaments.Find(fixture.tournamentId);
+            var tournament = db.Tournaments.Find(fixture.tournamentId);
             assignStats(result, db, tournament.name, fixture);
         }
 
-        public static void assignStats(Result result, ApplicationDbContext db,string tournamentName, Fixture fixture)  
+        public static void assignStats(Result result, ApplicationDbContext db, string tournamentName, Fixture fixture)
         {
-            List<Team> teamInFixture    = findTeams(result,db.Teams.ToList());
-            Team homeTeam               = teamInFixture.ElementAt(0);
-            Team awayTeam               = teamInFixture.ElementAt(1);
-            
+            List<Team> teamInFixture = findTeams(result, db.Teams.ToList());
+            Team homeTeam = teamInFixture.ElementAt(0);
+            Team awayTeam = teamInFixture.ElementAt(1);
+
             // assigns all stats && saves Changes
-            assignDefaultStats(tournamentName,homeTeam,awayTeam ,result,db); 
-            
+            assignDefaultStats(tournamentName, homeTeam, awayTeam, result, db);
+
             Tournament tourn = db.Tournaments.ToList().First(x => x.name == tournamentName);
             tourn.results = db.Results.Where(x => x.fixture.tournamentId == tourn.id).ToList();
             // chamges stats of top two team in each group of tournament
             if (tourn.results.Count == 12 || tourn.results.Count == 14 || tourn.results.Count == 15)
-                Helper.ChangeTeamStatus(db.teamTournamentStats.Where(x => x.tournamentName 
-                == tournamentName).ToList(),tourn,db); 
+                Helper.ChangeTeamStatus(db.teamTournamentStats.Where(x => x.tournamentName
+                == tournamentName).ToList(), tourn, db);
         }
 
         public static string SerializeResults(List<Result> results)
@@ -778,8 +784,8 @@ namespace ProOnePal.Models
             return xml;
         }
 
-        
-        private static void ChangeTeamStatus(List<TeamTournamentStat> tournStats,Tournament tournament,ApplicationDbContext db)
+
+        private static void ChangeTeamStatus(List<TeamTournamentStat> tournStats, Tournament tournament, ApplicationDbContext db)
         {
             var group = getStageFromTournament(tournament, db);
             if (group == "GS" || group == "QF")
@@ -805,7 +811,7 @@ namespace ProOnePal.Models
             db.SaveChanges();
         }
 
-        public static bool IsthereSameFixtureInThatDay(Fixture fix,List<Fixture> dbFixtures)
+        public static bool IsthereSameFixtureInThatDay(Fixture fix, List<Fixture> dbFixtures)
         {
             foreach (var fixture in dbFixtures)
             {
@@ -817,18 +823,18 @@ namespace ProOnePal.Models
         }
 
 
-        public static int getGamesPlayedInTournament(Team team, string tournName,ApplicationDbContext db)
+        public static int getGamesPlayedInTournament(Team team, string tournName, ApplicationDbContext db)
         {
             Tournament tourn = db.Tournaments.ToList().First(x => x.name == tournName);
             TeamTournamentStat tournStat = null;
-            if (hasTeamPlayedTourn(team,tournName))
+            if (hasTeamPlayedTourn(team, tournName))
                 tournStat = db.teamTournamentStats.ToList().First(x => x.tournamentName == tourn.name && x.teamId == team.id);
             else
                 return 0;
             return tournStat.gamesPlayed;
         }
 
-        public static bool hasTeamPlayedTourn(Team team,string tournName)
+        public static bool hasTeamPlayedTourn(Team team, string tournName)
         {
             foreach (var item in team.tournamentStats)
             {
@@ -840,7 +846,7 @@ namespace ProOnePal.Models
 
         public static int getGamesWonInTournament(Team team, Tournament tourn)
         {
-            return team.tournamentStats.First(x => x.tournamentName == tourn.name).gamesWon;   
+            return team.tournamentStats.First(x => x.tournamentName == tourn.name).gamesWon;
         }
 
         public static int getGamesLostInTournament(Team team, Tournament tourn)
@@ -856,17 +862,17 @@ namespace ProOnePal.Models
 
         public static double getPercentage(int gamesPlayed, int entity)
         {
-            var percent = (Convert.ToDouble(entity) / Convert.ToDouble(gamesPlayed)) * (100);
+            var percent = Convert.ToInt16(((Convert.ToDouble(entity) / Convert.ToDouble(gamesPlayed)) * (100)));
             return percent;
         }
 
         public static List<Team> getTeamsByTournamentName(ApplicationDbContext db, string tournamentname)
         {
             var retTeams = new List<Team>();
-            
+
             foreach (var stat in db.teamTournamentStats.ToList())
             {
-                if(stat.tournamentName == tournamentname)
+                if (stat.tournamentName == tournamentname)
                 {
                     var team = db.Teams.Find(stat.teamId);
                     retTeams.Add(team);
@@ -875,36 +881,36 @@ namespace ProOnePal.Models
             return retTeams.OrderBy(x => x.tournamentStats.FirstOrDefault(y => y.tournamentName == tournamentname).group).ToList();
         }
 
-        public static void assignDefaultStats (string tournamentName,Team homeTeam, Team  awayTeam,Result result,ApplicationDbContext db)
+        public static void assignDefaultStats(string tournamentName, Team homeTeam, Team awayTeam, Result result, ApplicationDbContext db)
         {
             TeamTournamentStat homeStats = db.teamTournamentStats.ToList().First(x => x.teamId == homeTeam.id &&
                                                                 x.tournamentName == tournamentName);
             TeamTournamentStat awayStats = db.teamTournamentStats.ToList().First(x => x.teamId == awayTeam.id &&
                                                                 x.tournamentName == tournamentName);
             homeStats.gamesPlayed++;
-            homeStats.goalsFor      += result.homeGoals;
-            homeStats.goalsAgainst  += result.awayaGoals;
+            homeStats.goalsFor += result.homeGoals;
+            homeStats.goalsAgainst += result.awayaGoals;
             homeStats.getGoalDiff();
 
             awayStats.gamesPlayed++;
-            awayStats.goalsFor      += result.awayaGoals;
-            awayStats.goalsAgainst  += result.homeGoals;
+            awayStats.goalsFor += result.awayaGoals;
+            awayStats.goalsAgainst += result.homeGoals;
             awayStats.getGoalDiff();
-            PopulateGamesWon(homeStats, awayStats, result,db);
+            PopulateGamesWon(homeStats, awayStats, result, db);
         }
 
-        private static void PopulateGamesWon(TeamTournamentStat homeTeam, TeamTournamentStat awayTeam, Result result,ApplicationDbContext db)
+        private static void PopulateGamesWon(TeamTournamentStat homeTeam, TeamTournamentStat awayTeam, Result result, ApplicationDbContext db)
         {
             if (result.homeGoals > result.awayaGoals)
             {
                 homeTeam.gamesWon++;
-                homeTeam.points     += 3;
+                homeTeam.points += 3;
                 awayTeam.gamesLost++;
             }
             else if (result.homeGoals < result.awayaGoals)
             {
                 awayTeam.gamesWon++;
-                awayTeam.points     += 3;
+                awayTeam.points += 3;
                 homeTeam.gamesLost++;
             }
             else {
@@ -918,19 +924,19 @@ namespace ProOnePal.Models
 
         private static List<Team> findTeams(Result result, List<Team> teams)
         {
-            var teamsInFixture  = new List<Team>();
+            var teamsInFixture = new List<Team>();
             string homeTeamName = result.fixture.fixtureName.Split(',').ElementAt(0);
             string awayTeamName = result.fixture.fixtureName.Split(',').ElementAt(1);
 
-            Team awayTeam       = teams.First(x => x.name == awayTeamName);
-            Team homeTeam       = teams.First(x => x.name == homeTeamName);
+            Team awayTeam = teams.First(x => x.name == awayTeamName);
+            Team homeTeam = teams.First(x => x.name == homeTeamName);
 
             teamsInFixture.Add(homeTeam);
             teamsInFixture.Add(awayTeam);
             return teamsInFixture;
         }
 
-        private static List<Team> getTeams(string homeTeamName,string awayTeamName, List<Team> teams)
+        private static List<Team> getTeams(string homeTeamName, string awayTeamName, List<Team> teams)
         {
             List<Team> retTeams = new List<Team>();
             foreach (var item in teams)
@@ -939,7 +945,7 @@ namespace ProOnePal.Models
             return retTeams;
         }
 
-        public static Fixture findFixture(string fitureName,List<Fixture> fixtures)
+        public static Fixture findFixture(string fitureName, List<Fixture> fixtures)
         {
             var array = fitureName.Split(',');
             foreach (var item in fixtures)
@@ -965,15 +971,15 @@ namespace ProOnePal.Models
             return lettersToAssign;
         }
 
-        public static IEnumerable<string> AssignGroups(List<string> letters,Tournament tourn)
+        public static IEnumerable<string> AssignGroups(List<string> letters, Tournament tourn)
         {
             var teams = tourn.enteredTeams;
             IEnumerable<int> teamIdList = getIdList(teams);
-            Random rand                 = new Random();
-            var randIds                 = teamIdList.OrderBy(x => rand.Next()).ToArray();
-            var lettersToAssign         = letters.Take(teams.Count / 4);
-            if(!AllTeamsEneteredHaveGrops(teams))
-                giveGroupsRandom(teams, lettersToAssign, randIds,tourn);
+            Random rand = new Random();
+            var randIds = teamIdList.OrderBy(x => rand.Next()).ToArray();
+            var lettersToAssign = letters.Take(teams.Count / 4);
+            if (!AllTeamsEneteredHaveGrops(teams))
+                giveGroupsRandom(teams, lettersToAssign, randIds, tourn);
             return lettersToAssign;
         }
 
@@ -994,7 +1000,7 @@ namespace ProOnePal.Models
                 }
             }
         }
-        public static void assignResultStat(Player player, ApplicationDbContext db,Result result,Tournament tourn, bool og)
+        public static void assignResultStat(Player player, ApplicationDbContext db, Result result, Tournament tourn, bool og)
         {
             var playerStat = player.tournamentStats.First(x => x.tournamentName == tourn.name);
             playerStat.goals++;
@@ -1013,21 +1019,21 @@ namespace ProOnePal.Models
             db.SaveChanges();
         }
 
-        public static bool haveTeamsPlayed(List<Team> teams,int tournId, ApplicationDbContext db)
+        public static bool haveTeamsPlayed(List<Team> teams, int tournId, ApplicationDbContext db)
         {
             var results = db.Results.ToList();
             foreach (var res in results.Where(x => x.fixture.tournamentId == tournId))
             {
                 if (getTeamNames(teams).Contains(res.fixture.homeTeam) &&
                 getTeamNames(teams).Contains(res.fixture.awayTeam))
-                    return true;                       
+                    return true;
             }
             return false;
         }
 
         public static bool hasTeamPlayedMaxGames(Team team, ApplicationDbContext db, Tournament tourn, ref string maxPlayedMessage)
         {
-            if (getStageFromTournament(tourn,db) == "GS")
+            if (getStageFromTournament(tourn, db) == "GS")
                 if (team.tournamentStats.FirstOrDefault(x => x.tournamentName == tourn.name).gamesPlayed <= 2)
                     return false;
                 else
@@ -1039,7 +1045,7 @@ namespace ProOnePal.Models
             return false;
         }
 
-        public static bool haveTeamsPlayedBefore(Fixture fixture,ApplicationDbContext db)
+        public static bool haveTeamsPlayedBefore(Fixture fixture, ApplicationDbContext db)
         {
             var prevFixtures = db.Fixtures.ToList();
             foreach (var item in prevFixtures)
@@ -1066,5 +1072,32 @@ namespace ProOnePal.Models
         }
 
 
+        public async Task MyWebSocket(AspNetWebSocketContext context)
+        {
+            while (true)
+            {
+                ArraySegment<byte> arraySegment = new ArraySegment<byte>(new byte[1024]);
+                // open the result. This is waiting asynchronously
+                WebSocketReceiveResult socketResult =
+                await context.WebSocket.ReceiveAsync(arraySegment,
+                CancellationToken.None);
+                // return the message to the client if the socket is still open
+                if (context.WebSocket.State == WebSocketState.Open)
+                {
+                    string message = Encoding.UTF8.GetString(arraySegment.Array, 0,
+                    socketResult.Count);
+                    var userMessage = "Your message: " + message + " at " +
+                    DateTime.Now.ToString();
+                    arraySegment = new
+                    ArraySegment<byte>(Encoding.UTF8.GetBytes(message));
+                    // Asynchronously send a message to the client
+                    await context.WebSocket.SendAsync(arraySegment,
+                    WebSocketMessageType.Text,
+                    true, CancellationToken.None);
+                }
+                else { break; }
+            }
+        }
     }
+   
 }

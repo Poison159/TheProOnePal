@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProOnePal.Models;
 using System.IO;
+using PagedList;
 
 namespace ProOnePal.Controllers
 {
@@ -17,8 +18,13 @@ namespace ProOnePal.Controllers
 
         // GET: Players
       
-        public ActionResult Index(string searchName, string team)
+        public ActionResult Index(string searchName, string team, int ? page)
         {
+            if (searchName != null)
+            {
+                page = 1;
+            }
+
             var teamList = new List<string>();
             var players = from cr in db.Players select cr;
             var test = players.ToList();
@@ -39,7 +45,11 @@ namespace ProOnePal.Controllers
             teamList.AddRange(teamquery.Distinct());
             ViewBag.team = new SelectList(teamList);
             ViewBag.num = 0;
-            return View(players.OrderBy(x => x.teamId).ToList());
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+            return View(players.OrderBy(x => x.teamId).ToList().ToPagedList(pageNumber,pageSize));
         }
         // GET: Players/Details/5
         public ActionResult Details(int? id)
