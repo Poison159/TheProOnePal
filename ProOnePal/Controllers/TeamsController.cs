@@ -12,8 +12,10 @@ using System.Text;
 
 namespace ProOnePal.Controllers
 {
+    
     public class TeamsController : Controller
     {
+        
         private ApplicationDbContext db = new ApplicationDbContext();
         
         // GET: Teams

@@ -96,7 +96,7 @@ namespace ProOnePal.Controllers
             ViewBag.position = new SelectList(positions);
             if (ModelState.IsValid)
             {
-                if (!Helper.CheckIfPlayerInTeam(player, db.Teams, db.Players))
+                if (!Helper.CheckIfPlayerInTeam(player, db.Teams, db.Players)) // check if playert already in team
                 {
                     if (player.imageUpload != null)
                     {

@@ -98,3 +98,6 @@ C:\Users\Siya\Downloads\ProOnePal\ProOnePalService\bin\Microsoft.Owin.Security.O
 C:\Users\Siya\Downloads\ProOnePal\ProOnePalService\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Siya\Downloads\ProOnePal\ProOnePalService\bin\EntityFramework.SqlServer.dll
 C:\Users\Siya\Downloads\ProOnePal\ProOnePalService\bin\EntityFramework.SqlServer.xml
+C:\Users\Siya\Downloads\ProOnePal\ProOnePalService\bin\PagedList.dll
+C:\Users\Siya\Downloads\ProOnePal\ProOnePalService\bin\PagedList.xml
+C:\Users\Siya\Downloads\ProOnePal\ProOnePalService\bin\Newtonsoft.Json.pdb

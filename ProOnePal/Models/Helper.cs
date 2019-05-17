@@ -12,6 +12,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.WebSockets;
 using System.Xml;
+using System.Web.Http.Results;
+using System.Web.Mvc;
+using System.Globalization;
 
 namespace ProOnePal.Models
 {
@@ -55,7 +58,7 @@ namespace ProOnePal.Models
                 resStat.player = db.Players.Find(resStat.playerId);
         }
 
-        internal static List<Player> ArrangeByGaoals(List<Player> players, ApplicationDbContext db)
+        public static List<Player> ArrangeByGaoals(List<Player> players, ApplicationDbContext db)
         {
             List<Player> retPlayers = new List<Player>();
             Dictionary<int, int> playerGaols = new Dictionary<int, int>();
@@ -91,7 +94,8 @@ namespace ProOnePal.Models
                     statsByPercentage.Add(SBT);
 
                 }
-                else {
+                else
+                {
                     var gamesWon = getGamesWonInTournament(team, db.Tournaments.ToList().First(x => x.name == item.name));
                     var gamesDrawn = getGamesDrawnInTournament(team, db.Tournaments.ToList().First(x => x.name == item.name));
                     var gamesLost = getGamesLostInTournament(team, db.Tournaments.ToList().First(x => x.name == item.name));
@@ -199,7 +203,8 @@ namespace ProOnePal.Models
             int mid = (tourn.enteredTeams.Count / 2);
             while (start < tourn.enteredTeams.Count / 2)
             {
-                Fixture fix = new Fixture() {
+                Fixture fix = new Fixture()
+                {
                     date = DateTime.Now,
                     pitch = "madiba",
                     Played = "No",
@@ -419,12 +424,15 @@ namespace ProOnePal.Models
                     result += stat.gamesWon;
                 }
                 return result;
-            } else if (kind == "lost")
+            }
+            else if (kind == "lost")
             {
                 foreach (var stat in team.tournamentStats)
                     result += stat.gamesLost;
                 return result;
-            } else if (kind == "drawn") {
+            }
+            else if (kind == "drawn")
+            {
                 foreach (var stat in team.tournamentStats)
                     result += stat.gamesLost;
                 return result;
@@ -680,7 +688,8 @@ namespace ProOnePal.Models
         internal static List<string> getFixturesString(List<Fixture> list)
         {
             List<string> fixtureList = new List<string>();
-            if (list != null) {
+            if (list != null)
+            {
                 foreach (var item in list)
                 {
                     string temp = "";
@@ -913,7 +922,8 @@ namespace ProOnePal.Models
                 awayTeam.points += 3;
                 homeTeam.gamesLost++;
             }
-            else {
+            else
+            {
                 homeTeam.gamesDrawn++;
                 awayTeam.gamesDrawn++;
                 homeTeam.points++;
@@ -1099,5 +1109,4 @@ namespace ProOnePal.Models
             }
         }
     }
-   
 }

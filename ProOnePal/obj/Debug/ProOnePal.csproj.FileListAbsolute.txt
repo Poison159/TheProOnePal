@@ -1,141 +1,3 @@
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\csc.exe
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\Microsoft.CodeAnalysis.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\Microsoft.CSharp.Core.targets
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\Microsoft.VisualBasic.Core.targets
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\System.Collections.Immutable.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\System.Reflection.Metadata.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\vbc.exe
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\VBCSCompiler.exe
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\VBCSCompiler.exe.config
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\ProOnePal.dll.config
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\ProOnePal.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\ProOnePal.pdb
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Antlr3.Runtime.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\EntityFramework.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\EntityFramework.SqlServer.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Core.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Owin.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Host.SystemWeb.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Cookies.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Facebook.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Google.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.OAuth.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Twitter.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Web.Infrastructure.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Newtonsoft.Json.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Owin.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.Helpers.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.Mvc.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.Optimization.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.Razor.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.WebPages.Deployment.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.WebPages.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.WebPages.Razor.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\WebGrease.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.Helpers.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.Mvc.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.Optimization.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.Razor.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.WebPages.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.WebPages.Deployment.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.WebPages.Razor.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Antlr3.Runtime.pdb
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Newtonsoft.Json.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\EntityFramework.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\EntityFramework.SqlServer.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Core.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Owin.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Host.SystemWeb.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Facebook.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Cookies.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.OAuth.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Google.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Twitter.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\obj\Debug\ProOnePal.csprojResolveAssemblyReference.cache
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\obj\Debug\ProOnePal.dll
-c:\users\siya\documents\visual studio 2015\Projects\ProOnePal\ProOnePal\obj\Debug\ProOnePal.pdb
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\csc.exe
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\vbc.exe
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\VBCSCompiler.exe
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\ProOnePal.dll.config
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\ProOnePal.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\ProOnePal.pdb
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Antlr3.Runtime.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\EntityFramework.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\EntityFramework.SqlServer.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Core.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Owin.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Host.SystemWeb.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Cookies.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Facebook.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Google.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.OAuth.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Twitter.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Newtonsoft.Json.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Owin.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.Helpers.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.Mvc.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.Optimization.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.Razor.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.WebPages.Deployment.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.WebPages.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.WebPages.Razor.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\WebGrease.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.Helpers.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.Mvc.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.Optimization.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.Razor.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.WebPages.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.WebPages.Deployment.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\System.Web.WebPages.Razor.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Antlr3.Runtime.pdb
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Newtonsoft.Json.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\EntityFramework.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\EntityFramework.SqlServer.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Core.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Owin.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Host.SystemWeb.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Facebook.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Cookies.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.OAuth.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Google.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Twitter.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\obj\Debug\ProOnePal.csprojResolveAssemblyReference.cache
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\obj\Debug\ProOnePal.dll
-C:\Users\Sibotage\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\obj\Debug\ProOnePal.pdb
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\roslyn\csc.exe
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -170,7 +32,14 @@ C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Twitter.
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Newtonsoft.Json.dll
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Owin.dll
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\PagedList.dll
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\PagedList.Mvc.dll
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Net.Http.Formatting.dll
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Cors.dll
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Helpers.dll
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.Cors.dll
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.dll
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.WebHost.dll
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Mvc.dll
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Optimization.dll
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Razor.dll
@@ -179,6 +48,13 @@ C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.WebPages.dll
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.WebPages.Razor.dll
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\WebGrease.dll
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Microsoft.Owin.xml
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\PagedList.xml
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\PagedList.Mvc.xml
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Net.Http.Formatting.xml
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.xml
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.Cors.xml
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.WebHost.xml
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Helpers.xml
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Mvc.xml
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Optimization.xml
@@ -193,7 +69,6 @@ C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\EntityFramework.SqlServer.xml
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Microsoft.Owin.xml
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Host.SystemWeb.xml
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.xml
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Facebook.xml
@@ -205,166 +80,3 @@ C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Microsof
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\obj\Debug\ProOnePal.csprojResolveAssemblyReference.cache
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\obj\Debug\ProOnePal.dll
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\obj\Debug\ProOnePal.pdb
-D:\downlooads\ProOnePal\ProOnePal\bin\roslyn\csc.exe
-D:\downlooads\ProOnePal\ProOnePal\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\downlooads\ProOnePal\ProOnePal\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\downlooads\ProOnePal\ProOnePal\bin\roslyn\System.Collections.Immutable.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\roslyn\System.Reflection.Metadata.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\roslyn\vbc.exe
-D:\downlooads\ProOnePal\ProOnePal\bin\roslyn\VBCSCompiler.exe
-D:\downlooads\ProOnePal\ProOnePal\bin\roslyn\VBCSCompiler.exe.config
-D:\downlooads\ProOnePal\ProOnePal\bin\ProOnePal.dll.config
-D:\downlooads\ProOnePal\ProOnePal\bin\ProOnePal.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\ProOnePal.pdb
-D:\downlooads\ProOnePal\ProOnePal\bin\Antlr3.Runtime.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\EntityFramework.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\EntityFramework.SqlServer.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Core.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Owin.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Host.SystemWeb.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Cookies.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Facebook.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Google.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.OAuth.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Twitter.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Web.Infrastructure.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\Newtonsoft.Json.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\Owin.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\System.Web.Helpers.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\System.Web.Mvc.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\System.Web.Optimization.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\System.Web.Razor.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\System.Web.WebPages.Deployment.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\System.Web.WebPages.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\System.Web.WebPages.Razor.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\WebGrease.dll
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\System.Web.Helpers.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\System.Web.Mvc.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\System.Web.Optimization.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\System.Web.Razor.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\System.Web.WebPages.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\System.Web.WebPages.Deployment.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\System.Web.WebPages.Razor.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\Antlr3.Runtime.pdb
-D:\downlooads\ProOnePal\ProOnePal\bin\Newtonsoft.Json.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\EntityFramework.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\EntityFramework.SqlServer.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Core.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Owin.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Host.SystemWeb.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Facebook.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Cookies.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.OAuth.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Google.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Twitter.xml
-D:\downlooads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\downlooads\ProOnePal\ProOnePal\obj\Debug\ProOnePal.csprojResolveAssemblyReference.cache
-D:\downlooads\ProOnePal\ProOnePal\obj\Debug\ProOnePal.dll
-D:\downlooads\ProOnePal\ProOnePal\obj\Debug\ProOnePal.pdb
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Net.Http.Formatting.dll
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Cors.dll
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.Cors.dll
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.dll
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.WebHost.dll
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Net.Http.Formatting.xml
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.xml
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.Cors.xml
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\System.Web.Http.WebHost.xml
-<<<<<<< HEAD
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\PagedList.dll
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\PagedList.Mvc.dll
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\PagedList.xml
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\PagedList.Mvc.xml
-=======
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\roslyn\csc.exe
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\roslyn\vbc.exe
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\roslyn\VBCSCompiler.exe
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\ProOnePal.dll.config
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\ProOnePal.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\ProOnePal.pdb
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Antlr3.Runtime.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\EntityFramework.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\EntityFramework.SqlServer.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Core.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Owin.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.Host.SystemWeb.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Cookies.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.Security.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Facebook.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Google.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.Security.OAuth.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Twitter.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Newtonsoft.Json.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Owin.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Net.Http.Formatting.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.Cors.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.Helpers.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.Http.Cors.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.Http.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.Http.WebHost.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.Mvc.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.Optimization.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.Razor.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.WebPages.Deployment.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.WebPages.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.WebPages.Razor.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\WebGrease.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Net.Http.Formatting.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.Http.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.Http.Cors.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.Http.WebHost.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.Helpers.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.Mvc.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.Optimization.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.Razor.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.WebPages.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.WebPages.Deployment.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\System.Web.WebPages.Razor.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Antlr3.Runtime.pdb
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Newtonsoft.Json.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\EntityFramework.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\EntityFramework.SqlServer.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Core.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.Owin.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.Host.SystemWeb.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.Security.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Facebook.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Cookies.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.Security.OAuth.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Google.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Twitter.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\obj\Debug\ProOnePal.csprojResolveAssemblyReference.cache
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\obj\Debug\ProOnePal.dll
-C:\Users\sibongisenib\Desktop\TheProOnePal\ProOnePal\obj\Debug\ProOnePal.pdb
->>>>>>> 9ce28774415b466715945910553c6df79ea569fc
