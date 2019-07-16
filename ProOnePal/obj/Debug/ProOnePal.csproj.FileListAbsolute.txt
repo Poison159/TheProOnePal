@@ -11,8 +11,11 @@ C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\roslyn\vbc.exe
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\roslyn\VBCSCompiler.exe
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\ProOnePal.dll.config
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\ProOnePal.dll
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\ProOnePal.pdb
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\obj\Debug\ProOnePal.csprojResolveAssemblyReference.cache
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\obj\Debug\ProOnePal.dll
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\obj\Debug\ProOnePal.pdb
+C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\ProOnePal.dll
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Antlr3.Runtime.dll
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\EntityFramework.dll
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\EntityFramework.SqlServer.dll
@@ -77,6 +80,3 @@ C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.OAuth.xm
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Siya\Downloads\ProOnePal\ProOnePal\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\obj\Debug\ProOnePal.csprojResolveAssemblyReference.cache
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\obj\Debug\ProOnePal.dll
-C:\Users\Siya\Downloads\ProOnePal\ProOnePal\obj\Debug\ProOnePal.pdb

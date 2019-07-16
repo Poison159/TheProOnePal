@@ -51,11 +51,12 @@
         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
         @Html.PagedListPager(Model, page => Url.Action("Index",new { page }))
-    
+   @if (User.IsInRole("Admin"))
+   {
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
-
+   }
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script>
     jQuery(document).ready(function ($) {

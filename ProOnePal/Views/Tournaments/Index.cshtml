@@ -8,10 +8,13 @@
     <p style="font-family:'Segoe Print'; padding-top:0px; font-size:larger" class="text-center top-right">Tournaments</p>
 </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
 @{
     var j = 1;
     for (int i = 0; i < 2; i++)

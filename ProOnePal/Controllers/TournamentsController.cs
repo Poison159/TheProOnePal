@@ -209,7 +209,7 @@ namespace ProOnePal.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult AddTeam(int? id, int teamId)
         {
-            //ViewBag.teamId = new SelectList(db.Teams, "id", "name");
+            ViewBag.teamId = new SelectList(db.Teams, "id", "name");
             var images              = Helper.getImagePaths(db);
             Team team               = db.Teams.Find(teamId);
             var tournament          = db.Tournaments.Find(id);
@@ -249,9 +249,10 @@ namespace ProOnePal.Controllers
             fixture.tournament  = tournament;
             var teams           = Helper.getTeamsByTournamentName(db,tournament.name);  
             var teamNames       = Helper.getTeamNames(teams);
-
+            var fixtures        = Helper.getFixturesString(db.Fixtures.ToList().Where(x => x.tournamentId == tournament.id).ToList());
             ViewBag.HomeTeam    = new SelectList(teamNames);
             ViewBag.AwayTeam    = new SelectList(teamNames);
+            ViewBag.Fixtures    = fixtures;
             ViewBag.errors      = "";
             
             return View(fixture);
@@ -267,6 +268,7 @@ namespace ProOnePal.Controllers
             var teams               = Helper.getTeamsByTournamentName(db, tournament.name);
             var teamNames           = Helper.getTeamNames(teams);
             var errors              = new List<string>();
+            var fixtures = Helper.getFixturesString(db.Fixtures.ToList().Where(x => x.tournamentId == tournament.id).ToList());
             string maxPlayedMessage = "";
 
             Helper.assignTournamentsToFixtures(db);
@@ -291,7 +293,8 @@ namespace ProOnePal.Controllers
             ViewBag.errors = errors;
             ViewBag.HomeTeam = new SelectList(teamNames);
             ViewBag.AwayTeam = new SelectList(teamNames);
-            return View();
+            ViewBag.Fixtures = fixtures;
+            return View(fixture);
         }
         
         public ActionResult LineUp(int ? fixId)

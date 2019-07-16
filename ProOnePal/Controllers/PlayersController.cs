@@ -188,7 +188,7 @@ namespace ProOnePal.Controllers
         }
         public ActionResult AddPlayers()
         {
-            var filePath = @"C:\Users\Siya\Documents\Visual Studio 2015\Projects\ProOnePal\ProOnePal\obj\Debug\TestPlayers.txt";
+            var filePath = @"C:\Users\Siya\Downloads\ProOnePal\ProOnePal\obj\Debug\TestPlayers.txt";
             var myFile = System.IO.File.Open(filePath, FileMode.Open);
             using (StreamReader myStream = new StreamReader(myFile))
             {

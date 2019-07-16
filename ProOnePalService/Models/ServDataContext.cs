@@ -31,7 +31,7 @@ namespace ProOnePalService.Models
         public DbSet<PlayerTournamentStat> playerTournamentStats { get; set; }
         public DbSet<PlayerResultStat> playerResultStats { get; set; }
 
-        private List<Team> getTeams() {
+        private List<Team> getTeams()               {
 
             string queryString = "SELECT Id, name, kasi, imgPath FROM dbo.Teams;";
             List<Team> teams = new List<Team>();

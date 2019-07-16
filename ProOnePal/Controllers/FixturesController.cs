@@ -258,11 +258,7 @@ namespace ProOnePal.Controllers
             
             ViewBag.homePlayersId = new SelectList(homePlayers, "Id", "name");
             ViewBag.awayPlayersId = new SelectList(awayPlayers, "Id", "name");
-            // Own Goals Scenario
-            if (homePlayersId != null && totalAwayGoals > 0)
-            {
-                Helper.assignResultStat(player, db, result, tourn, true);
-            }
+           
             if (totalHomeGoals == 0 && homePlayersId != null)
             {
                 ViewBag.homeError = "No more " + result.fixture.homeTeam + " Goals to assign";

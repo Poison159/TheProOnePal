@@ -35,10 +35,12 @@
             </div>
         }
 </div>
-    
-<p>
-    @Html.ActionLink("Create New", "Create", new { @class = "btn-btn-default" })
-</p>
 
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create", new { @class = "btn-btn-default" })
+    </p>
+}
 
 
